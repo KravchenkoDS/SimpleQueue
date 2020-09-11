@@ -1,6 +1,5 @@
 # SimpleQueue
 
-
 iex -S mix
 
 import SimpleQueue.SimpleQueueSupervisor
@@ -8,18 +7,18 @@ import SimpleQueue.SimpleQueueSupervisor
 SimpleQueue.SimpleQueueSupervisor.start_children
 SimpleQueue.SimpleQueueSupervisor.stop_child
 
-SimpleQueue.SimpleQueueSupervisor.start_child(123)
-SimpleQueue.SimpleQueueSupervisor.start_child(12345)
-
+SimpleQueue.SimpleQueueSupervisor.start_child(:test1)
+SimpleQueue.SimpleQueueSupervisor.start_child(:test2)
 
 SimpleQueueSupervisor.count_children(SimpleQueue.SimpleQueueSupervisor)
 
-SimpleQueue.SimpleQueueSupervisor.find_child(159)
-SimpleQueue.SimpleQueueSupervisor.remove_child(SimpleQueue.SimpleQueueSupervisor.find_child(184))
-SimpleQueue.SimpleQueueSupervisor.delete_child(SimpleQueue.SimpleQueueSupervisor.find_child(184))
+SimpleQueue.SimpleQueueSupervisor.find_child(:test1)
+SimpleQueue.SimpleQueueSupervisor.remove_child(SimpleQueue.SimpleQueueSupervisor.find_child(:test1))
+SimpleQueue.SimpleQueueSupervisor.delete_child(SimpleQueue.SimpleQueueSupervisor.find_child(:test1))
 SimpleQueue.SimpleQueueSupervisor.children
 SimpleQueue.SimpleQueueSupervisor.count_children
 
 DynamicSupervisor.count_children(SimpleQueue.SimpleQueueSupervisor)
 DynamicSupervisor.stop(SimpleQueue.SimpleQueueSupervisor)
+
 

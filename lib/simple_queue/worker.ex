@@ -7,13 +7,8 @@ defmodule SimpleQueue.Worker do
     GenServer.start_link(
       __MODULE__,
       child,
-      name: via_tuple(child)
+      name: child
     )
-  end
-
-  def via_tuple(child) do
-    IO.inspect("Worker: via_tuple")
-    SimpleQueue.ProcessRegistry.via_tuple({__MODULE__, child})
   end
 
   @impl GenServer
@@ -27,7 +22,6 @@ defmodule SimpleQueue.Worker do
   def work do
     IO.inspect("Worker: work")
     # raise "oops"
-
     Process.send_after(self(), :work, 5000)
   end
 

@@ -7,7 +7,6 @@ defmodule SimpleQueue.Application do
 
   def start(_type, _args) do
     children = [
-      SimpleQueue.ProcessRegistry,
       SimpleQueue.SimpleQueueSupervisor
     ]
 

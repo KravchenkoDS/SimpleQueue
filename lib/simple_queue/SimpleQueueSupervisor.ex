@@ -15,13 +15,6 @@ defmodule SimpleQueue.SimpleQueueSupervisor do
     DynamicSupervisor.init(strategy: :one_for_one)
   end
 
-  def handle_info({:EXIT, from, reason}, state) do
-    IO.puts("Exit pid: #{inspect(from)} reason: #{inspect(reason)}")
-    child = state[from]
-    {:ok, pid} = child.start_link()
-    {:noreply, Map.put(state, pid, child)}
-  end
-
   def start_children do
     IO.inspect("SimpleQueueSupervisor: start_children")
 
@@ -48,7 +41,6 @@ defmodule SimpleQueue.SimpleQueueSupervisor do
     end
   end
 
-  # Terminate a child process and remove it from supervision
   def remove_child(pid) do
     DynamicSupervisor.terminate_child(__MODULE__, pid)
   end
