@@ -1,21 +1,25 @@
 # SimpleQueue
 
-**TODO: Add description**
 
-## Installation
+iex -S mix
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `simple_queue` to your list of dependencies in `mix.exs`:
+import SimpleQueue.SimpleQueueSupervisor
 
-```elixir
-def deps do
-  [
-    {:simple_queue, "~> 0.1.0"}
-  ]
-end
-```
+SimpleQueue.SimpleQueueSupervisor.start_children
+SimpleQueue.SimpleQueueSupervisor.stop_child
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/simple_queue](https://hexdocs.pm/simple_queue).
+SimpleQueue.SimpleQueueSupervisor.start_child(123)
+SimpleQueue.SimpleQueueSupervisor.start_child(12345)
+
+
+SimpleQueueSupervisor.count_children(SimpleQueue.SimpleQueueSupervisor)
+
+SimpleQueue.SimpleQueueSupervisor.find_child(159)
+SimpleQueue.SimpleQueueSupervisor.remove_child(SimpleQueue.SimpleQueueSupervisor.find_child(184))
+SimpleQueue.SimpleQueueSupervisor.delete_child(SimpleQueue.SimpleQueueSupervisor.find_child(184))
+SimpleQueue.SimpleQueueSupervisor.children
+SimpleQueue.SimpleQueueSupervisor.count_children
+
+DynamicSupervisor.count_children(SimpleQueue.SimpleQueueSupervisor)
+DynamicSupervisor.stop(SimpleQueue.SimpleQueueSupervisor)
 
