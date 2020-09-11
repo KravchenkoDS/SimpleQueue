@@ -1,0 +1,2 @@
+defmodule SimpleQueue do
+end
